@@ -9,7 +9,11 @@
 //
 
 import Foundation
+#if COCOAPODS
+import secp256k1Wrapper
+#else
 import secp256k1_bindings
+#endif
 
 public extension ContiguousBytes {
     @inlinable var bytes: [UInt8] {
