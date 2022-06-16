@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'csjones' => '' }
   s.source           = {
-    :git => 'git@github.com:portto/secp256k1.swift.git',
+    :git => 'https://github.com/portto/secp256k1.swift.git',
     :tag => s.version.to_s,
     :submodules => true
   }
@@ -19,27 +19,27 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '6.0'
 
   s.source_files =
-    'Sources/implementation/Asymmetric.swift',
-    'Sources/implementation/DH.swift',
-    'Sources/implementation/Digests.swift',
-    'Sources/implementation/ECDH.swift',
-    'Sources/implementation/ECDSA.swift',
-    'Sources/implementation/EdDSA.swift',
-    'Sources/implementation/Errors.swift',
-    'Sources/implementation/PrettyBytes.swift',
-    'Sources/implementation/SafeCompare.swift',
-    'Sources/implementation/Schnorr.swift',
-    'Sources/implementation/secp256k1.swift',
-    'Sources/implementation/SHA256.swift',
-    'Sources/implementation/swift-crypto/Sources/Crypto/Digests/Digest.swift',
-    'Sources/implementation/swift-crypto/Sources/Crypto/Signatures/Signature.swift',
-    'Sources/implementation/swift-crypto/Sources/Crypto/Util/BoringSSL/RNG_boring.swift',
-    'Sources/implementation/swift-crypto/Sources/Crypto/Util/SecureBytes.swift',
-    'Sources/implementation/swift-crypto/Tests/_CryptoExtrasTests/Utils/BytesUtil.swift',
-    'Sources/implementation/Tweak.swift',
-    'Sources/implementation/Utility.swift',
-    'Sources/implementation/Zeroization.swift'
-  s.dependency 'secp256k1Wrapper'
+    'Sources/secp256k1Swift/Asymmetric.swift',
+    'Sources/secp256k1Swift/DH.swift',
+    'Sources/secp256k1Swift/Digests.swift',
+    'Sources/secp256k1Swift/ECDH.swift',
+    'Sources/secp256k1Swift/ECDSA.swift',
+    'Sources/secp256k1Swift/EdDSA.swift',
+    'Sources/secp256k1Swift/Errors.swift',
+    'Sources/secp256k1Swift/PrettyBytes.swift',
+    'Sources/secp256k1Swift/SafeCompare.swift',
+    'Sources/secp256k1Swift/Schnorr.swift',
+    'Sources/secp256k1Swift/secp256k1.swift',
+    'Sources/secp256k1Swift/SHA256.swift',
+    'Sources/swift-crypto/Sources/Crypto/Digests/Digest.swift',
+    'Sources/swift-crypto/Sources/Crypto/Signatures/Signature.swift',
+    'Sources/swift-crypto/Sources/Crypto/Util/BoringSSL/RNG_boring.swift',
+    'Sources/swift-crypto/Sources/Crypto/Util/SecureBytes.swift',
+    'Sources/swift-crypto/Tests/_CryptoExtrasTests/Utils/BytesUtil.swift',
+    'Sources/secp256k1Swift/Tweak.swift',
+    'Sources/secp256k1Swift/Utility.swift',
+    'Sources/secp256k1Swift/Zeroization.swift'
+  s.dependency 'secp256k1Wrapper', '~> 0.0.4'
 
 end
 

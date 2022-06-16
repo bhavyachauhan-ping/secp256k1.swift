@@ -1,6 +1,3 @@
-[submodule "Sources/bindings/secp256k1"]
-	path = Sources/bindings/secp256k1
-	url = https://github.com/bitcoin-core/secp256k1
-[submodule "Sources/implementation/swift-crypto"]
-	path = Sources/implementation/swift-crypto
+[submodule "Sources/swift-crypto"]
+	path = Sources/swift-crypto
 	url = https://github.com/apple/swift-crypto
