@@ -3,7 +3,7 @@
 import PackageDescription
 
 var dependencies: [Package.Dependency] = [
-    .package(url: "git@github.com:portto/secp256k1.git", from: "0.0.4")
+    .package(url: "https://github.com/portto/secp256k1.git", from: "0.0.4")
 ]
 
 #if os(macOS)
