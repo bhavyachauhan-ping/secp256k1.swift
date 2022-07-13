@@ -122,6 +122,15 @@ public extension secp256k1 {
             public init<D: ContiguousBytes>(rawRepresentation data: D, format: secp256k1.Format) throws {
                 self.baseKey = try PublicKeyImplementation(rawRepresentation: data, format: format)
             }
+
+            /// Generates a secp256k1 public key from a raw representation.
+            /// - Parameter data: A raw representation of the key.
+            /// - Throws: An error is thrown when the raw representation does not create a public key.
+            public init(rawRepresentation data: [UInt8], format: secp256k1.Format) throws {
+                var keyParity: Int32 = 0
+                let xonly = try XonlyKeyImplementation.generate(bytes: data, keyParity: &keyParity, format: format)
+                self.baseKey = PublicKeyImplementation(rawRepresentation: data, xonly: xonly, keyParity: keyParity, format: format)
+            }
         }
 
         /// The corresponding x-only public key.
