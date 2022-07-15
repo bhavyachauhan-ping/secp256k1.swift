@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'secp256k1Swift'
-  s.version          = '0.7.3'
+  s.version          = '0.7.4'
   s.summary          = 'elliptic curve public key cryptography, ECDSA, Schnorr Signatures for Bitcoin and C bindings from libsecp256k1.'
 
   s.homepage         = 'https://github.com/portto/secp256k1.swift'
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     'Sources/secp256k1Swift/Tweak.swift',
     'Sources/secp256k1Swift/Utility.swift',
     'Sources/secp256k1Swift/Zeroization.swift'
-  s.dependency 'secp256k1Wrapper', '~> 0.0.4'
+  s.dependency 'secp256k1Wrapper', '~> 0.0.5'
 
 end
 
