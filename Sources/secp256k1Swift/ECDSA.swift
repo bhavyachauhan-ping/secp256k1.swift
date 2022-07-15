@@ -234,7 +234,7 @@ extension secp256k1.Signing.ECDSAValidator: DigestValidator, DataValidator {
         signature.rawRepresentation.copyToUnsafeMutableBytes(of: &secp256k1Signature.data)
 
         return secp256k1_ec_pubkey_parse(secp256k1.Context.raw, &secp256k1PublicKey, validatingKey.bytes, validatingKey.bytes.count).boolValue &&
-            secp256k1_ecdsa_verify(secp256k1.Context.raw, &secp256k1Signature, Array(digest), &secp256k1PublicKey).boolValue
+            secp256k1_ecdsa_verify_with_handling_high_s(secp256k1.Context.raw, &secp256k1Signature, Array(digest), &secp256k1PublicKey).boolValue
     }
 
     /// Verifies an ECDSA signature over the secp256k1 elliptic curve.
