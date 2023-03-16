@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 
 import PackageDescription
 
@@ -39,7 +39,8 @@ let package = Package(
             name: "libsecp256k1",
             dependencies: [
                 "secp256k1_bindings"
-            ]
+            ],
+            path: "Sources/secp256k1/"
         ),
         .target(
             name: "zkp",
