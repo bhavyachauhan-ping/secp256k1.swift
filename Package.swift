@@ -16,24 +16,25 @@ let dependencies: [Package.Dependency]
 #endif
 
 let package = Package(
-    name: "secp256k1",
+    name: "secp256k1lib",
     products: [
         // WARNING: These APIs should not be considered stable and may change at any time.
         .library(
-            name: "secp256k1",
+            name: "secp256k1lib",
             targets: [
-                "secp256k1"
+                "secp256k1lib"
             ]
         )
     ],
     dependencies: dependencies,
     targets: [
         .target(
-            name: "secp256k1",
+            name: "secp256k1lib",
             dependencies: [
                 "secp256k1_bindings",
                 "secp256k1_implementation"
             ],
+            path: "Sources/secp256k1/",
             exclude: []
         ),
         // The `libsecp256k1` bindings to programmatically work with Swift.
@@ -170,7 +171,7 @@ let package = Package(
         .testTarget(
             name: "secp256k1Tests",
             dependencies: [
-                "secp256k1"
+                "secp256k1lib"
             ]
         )
     ],
