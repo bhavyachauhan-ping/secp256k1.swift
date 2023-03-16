@@ -17,13 +17,13 @@ let dependencies: [Package.Dependency]
 #endif
 
 let package = Package(
-    name: "secp256k1",
+    name: "libsecp256k1",
     products: [
         // WARNING: These APIs should not be considered stable and may change at any time.
         .library(
-            name: "secp256k1",
+            name: "libsecp256k1",
             targets: [
-                "secp256k1"
+                "libsecp256k1"
             ]
         ),
         .library(
@@ -36,7 +36,7 @@ let package = Package(
     dependencies: dependencies,
     targets: [
         .target(
-            name: "secp256k1",
+            name: "libsecp256k1",
             dependencies: [
                 "secp256k1_bindings"
             ]
@@ -86,7 +86,7 @@ let package = Package(
         .testTarget(
             name: "secp256k1Tests",
             dependencies: [
-                "secp256k1"
+                "libsecp256k1"
             ]
         )
         // Breaks CI
