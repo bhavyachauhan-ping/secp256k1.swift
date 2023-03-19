@@ -1,8 +1,5 @@
-[submodule "Submodules/secp256k1"]
-	path = Submodules/secp256k1
-	url = https://github.com/bitcoin-core/secp256k1
-[submodule "Submodules/swift-crypto"]
-	path = Submodules/swift-crypto
+[submodule "Sources/swift-crypto"]
+	path = Sources/swift-crypto
 	url = https://github.com/apple/swift-crypto
 [submodule "Submodules/secp256k1-zkp"]
 	path = Submodules/secp256k1-zkp

@@ -2,24 +2,29 @@
 
 import PackageDescription
 
-let dependencies: [Package.Dependency]
+var dependencies: [Package.Dependency] = [
+    .package(url: "git@github.com:portto/secp256k1.git", from: "0.0.4")
+]
 
 #if os(macOS)
-    dependencies = [
+    dependencies.append(contentsOf: [
         // Dependencies used for package development
         .package(url: "https://github.com/csjones/lefthook.git", branch: "swift"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.49.5"),
         .package(url: "https://github.com/realm/SwiftLint.git", exact: "0.46.5"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0")
-    ]
-#else
-    dependencies = []
+    ])
 #endif
 
 let package = Package(
     name: "secp256k1Swift",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6)
+    ],
     products: [
-        // WARNING: These APIs should not be considered stable and may change at any time.
         .library(
             name: "secp256k1Swift",
             targets: [
@@ -32,66 +37,9 @@ let package = Package(
         .target(
             name: "secp256k1Swift",
             dependencies: [
-                "secp256k1_bindings",
-                "secp256k1_implementation"
+                .product(name: "secp256k1Wrapper", package: "secp256k1")
             ],
-            path: "Sources/secp256k1",
-            exclude: []
-        ),
-        // The `libsecp256k1` bindings to programmatically work with Swift.
-        .target(
-            name: "secp256k1_bindings",
-            path: "Sources/bindings",
-            exclude: [
-                "secp256k1/autogen.sh",
-                "secp256k1/build-aux",
-                "secp256k1/ci",
-                "secp256k1/configure.ac",
-                "secp256k1/contrib",
-                "secp256k1/COPYING",
-                "secp256k1/doc",
-                "secp256k1/examples",
-                "secp256k1/libsecp256k1.pc.in",
-                "secp256k1/Makefile.am",
-                "secp256k1/README.md",
-                "secp256k1/sage",
-                "secp256k1/SECURITY.md",
-                "secp256k1/src/asm",
-                "secp256k1/src/bench_ecmult.c",
-                "secp256k1/src/bench_internal.c",
-                "secp256k1/src/bench.c",
-                "secp256k1/src/modules",
-                "secp256k1/src/precompute_ecmult_gen.c",
-                "secp256k1/src/precompute_ecmult.c",
-                "secp256k1/src/tests_exhaustive.c",
-                "secp256k1/src/tests.c",
-                "secp256k1/src/valgrind_ctime_test.c"
-            ],
-            sources: [
-                "secp256k1/src/precomputed_ecmult_gen.c",
-                "secp256k1/src/precomputed_ecmult.c",
-                "secp256k1/src/secp256k1.c",
-                "src/Utility.c"
-            ],
-            cSettings: [
-                // Basic config values that are universal and require no dependencies.
-                // https://github.com/bitcoin-core/secp256k1/blob/master/src/basic-config.h#L12-L13
-                .define("ECMULT_GEN_PREC_BITS", to: "4"),
-                .define("ECMULT_WINDOW_SIZE", to: "15"),
-                // Enabling additional secp256k1 modules.
-                .define("ENABLE_MODULE_ECDH"),
-                .define("ENABLE_MODULE_EXTRAKEYS"),
-                .define("ENABLE_MODULE_RECOVERY"),
-                .define("ENABLE_MODULE_SCHNORRSIG")
-            ]
-        ),
-        // Only include select utility extensions because most of Swift Crypto is not required
-        .target(
-            name: "secp256k1_implementation",
-            dependencies: [
-                .target(name: "secp256k1_bindings")
-            ],
-            path: "Sources/implementation",
+            path: "Sources",
             exclude: [
                 "swift-crypto/cmake",
                 "swift-crypto/CMakeLists.txt",
@@ -147,26 +95,26 @@ let package = Package(
                 "swift-crypto/Tests/Test Vectors"
             ],
             sources: [
-                "Asymmetric.swift",
-                "DH.swift",
-                "Digests.swift",
-                "ECDH.swift",
-                "ECDSA.swift",
-                "EdDSA.swift",
-                "Errors.swift",
-                "PrettyBytes.swift",
-                "SafeCompare.swift",
-                "Schnorr.swift",
-                "secp256k1.swift",
-                "SHA256.swift",
+                "secp256k1Swift/Asymmetric.swift",
+                "secp256k1Swift/DH.swift",
+                "secp256k1Swift/Digests.swift",
+                "secp256k1Swift/ECDH.swift",
+                "secp256k1Swift/ECDSA.swift",
+                "secp256k1Swift/EdDSA.swift",
+                "secp256k1Swift/Errors.swift",
+                "secp256k1Swift/PrettyBytes.swift",
+                "secp256k1Swift/SafeCompare.swift",
+                "secp256k1Swift/Schnorr.swift",
+                "secp256k1Swift/secp256k1.swift",
+                "secp256k1Swift/SHA256.swift",
                 "swift-crypto/Sources/Crypto/Digests/Digest.swift",
                 "swift-crypto/Sources/Crypto/Signatures/Signature.swift",
                 "swift-crypto/Sources/Crypto/Util/BoringSSL/RNG_boring.swift",
                 "swift-crypto/Sources/Crypto/Util/SecureBytes.swift",
                 "swift-crypto/Tests/_CryptoExtrasTests/Utils/BytesUtil.swift",
-                "Tweak.swift",
-                "Utility.swift",
-                "Zeroization.swift"
+                "secp256k1Swift/Tweak.swift",
+                "secp256k1Swift/Utility.swift",
+                "secp256k1Swift/Zeroization.swift"
             ]
         ),
         .testTarget(

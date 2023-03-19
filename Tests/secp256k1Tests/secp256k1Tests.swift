@@ -1,3 +1,5 @@
+@testable import secp256k1Swift
+import secp256k1Wrapper
 import XCTest
 
 final class secp256k1Tests: XCTestCase, APITestingType {
