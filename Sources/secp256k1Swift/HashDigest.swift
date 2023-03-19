@@ -30,7 +30,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
-
+import secp256k1Wrapper
 // MARK: - HashDigest + DigestPrivate
 
 public typealias SHA256Digest = HashDigest

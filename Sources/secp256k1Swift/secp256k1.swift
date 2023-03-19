@@ -185,7 +185,16 @@ extension secp256k1 {
         self._xonlyBytes = xonly
         self._keyParity = keyParity
     }
-
+    
+    /// Backing initialization that generates a secp256k1 public key from a raw representation.
+    /// - Parameter data: A raw representation of the key.
+    @usableFromInline init<D: ContiguousBytes>(rawRepresentation data: D, xonly: D, keyParity: Int32, format: secp256k1.Format) {
+        self.bytes = data.bytes
+        self.format = format
+        self._xonlyBytes = xonly.bytes
+        self._keyParity = keyParity
+    }
+    
     /// Backing initialization that sets the public key from a xonly key object.
     /// - Parameter xonlyKey: a xonly key object
     @usableFromInline init(xonlyKey: XonlyKeyImplementation) {

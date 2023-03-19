@@ -1,9 +1,9 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 
 import PackageDescription
 
 var dependencies: [Package.Dependency] = [
-    .package(url: "https://github.com/portto/secp256k1.git", from: "0.0.5")
+    .package(url: "https://github.com/bhavyachauhan-ping/secp256k1", branch: "master")
 ]
 
 #if os(macOS)
@@ -97,12 +97,13 @@ let package = Package(
             sources: [
                 "secp256k1Swift/Asymmetric.swift",
                 "secp256k1Swift/DH.swift",
-                "secp256k1Swift/Digests.swift",
                 "secp256k1Swift/ECDH.swift",
                 "secp256k1Swift/ECDSA.swift",
                 "secp256k1Swift/EdDSA.swift",
                 "secp256k1Swift/Errors.swift",
+                "secp256k1Swift/HashDigest.swift",
                 "secp256k1Swift/PrettyBytes.swift",
+                "secp256k1Swift/Recovery.swift",
                 "secp256k1Swift/SafeCompare.swift",
                 "secp256k1Swift/Schnorr.swift",
                 "secp256k1Swift/secp256k1.swift",
