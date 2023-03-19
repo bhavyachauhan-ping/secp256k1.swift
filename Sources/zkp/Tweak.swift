@@ -9,6 +9,11 @@
 //
 
 import Foundation
+#if COCOAPODS
+import secp256k1Wrapper
+#else
+import secp256k1_bindings
+#endif
 
 public extension secp256k1.Signing.PrivateKey {
     /// Create a new `PrivateKey` by adding tweak to the secret key.

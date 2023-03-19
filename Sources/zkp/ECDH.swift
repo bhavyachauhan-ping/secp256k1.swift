@@ -9,6 +9,11 @@
 //
 
 import Foundation
+#if COCOAPODS
+import secp256k1Wrapper
+#else
+import secp256k1_bindings
+#endif
 
 // MARK: - secp256k1 + KeyAgreement
 

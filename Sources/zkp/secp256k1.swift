@@ -9,6 +9,11 @@
 //
 
 import Foundation
+#if COCOAPODS
+import secp256k1Wrapper
+#else
+import secp256k1_bindings
+#endif
 
 /// The secp256k1 Elliptic Curve.
 public enum secp256k1 {}
