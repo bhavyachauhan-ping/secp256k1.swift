@@ -94,3 +94,7 @@ iOSInjectionProject/
 
 # VSCode
 .vscode
+library
+/buildscript.log
+/build_errors.log
+/archives
